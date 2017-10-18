@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+/src/config/config.ts
+/src/app/services/*-sdk/
+
 # compiled output
 /dist
 /tmp

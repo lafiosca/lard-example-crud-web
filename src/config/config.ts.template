@@ -1,0 +1,11 @@
+const Config = {
+	api: {
+		basePath: 'https://%ApiId%.execute-api.%AwsRegion%.amazonaws.com/Api',
+	},
+	cognito: {
+		userPoolId: '%UserPoolId%',
+		appClientId: '%UserPoolClientWeb%',
+	},
+};
+
+export { Config };
