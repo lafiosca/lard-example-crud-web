@@ -1,0 +1,10 @@
+<h3>{{ note.id ? 'Edit Note' : 'Create Note' }}</h3>
+<div *ngIf="note.id">Id: {{ note.id }}</div><br>
+<div>Title: <input type="text" [(ngModel)]="note.title"></div><br>
+<div>
+	Text:<br>
+	<textarea [(ngModel)]="note.text">
+</div><br>
+<button class="btn btn-success" (click)="saveNote()" [disabled]="note.title.trim() === '' || saving || deleting">{{ saving ? 'Saving...' : 'Save Note' }}</button><br>
+<br>
+<button *ngIf="note.id" class="btn btn-danger" (click)="deleteNote()" [disabled]="saving || deleting">{{ deleting ? 'Deleting...' : 'Delete Note' }}</button><br>

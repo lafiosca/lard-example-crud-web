@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {
 	AuthenticationDetails,
-	CognitoIdentityCredentials,
 	CognitoUser,
-	CognitoUserAttribute,
 	CognitoUserPool,
 	CognitoUserSession,
 } from 'amazon-cognito-identity-js';

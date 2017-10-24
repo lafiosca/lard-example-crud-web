@@ -21,6 +21,9 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "amazon-cognito-identity-js": "^1.21.0",
+    "aws-sdk": "^2.139.0",
+    "aws-sign-web": "^1.2.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
@@ -31,7 +34,7 @@
     "@angular/language-service": "^4.2.4",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
-    "@types/node": "~6.0.60",
+    "@types/node": "^6.0.90",
     "codelyzer": "~3.1.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

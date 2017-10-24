@@ -1,0 +1,9 @@
+<ul *ngIf="notes !== null; else loadingNotesBlock" class="list-group">
+	<li (click)="selectNote(null)" class="list-group-item">[New Note]</li>
+	<li *ngFor="let thisNote of notes" (click)="selectNote(thisNote.id)" class="list-group-item" [ngClass]="{ active: note !== null && thisNote.id === note.id }">
+		<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">
+			{{ thisNote.title }}
+		</div>
+	</li>
+</ul>
+<ng-template #loadingNotesBlock>Loading notes...</ng-template>

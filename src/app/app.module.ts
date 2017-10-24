@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 
 import { appRouting } from './app.routing';
@@ -18,7 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { EditorService } from './editor/editor.service';
 import { NoteListComponent } from './editor/note-list/note-list.component';
-import { NoteComponent } from './editor/note.component';
+import { NoteComponent } from './editor/note/note.component';
 
 @NgModule({
 	declarations: [
@@ -30,8 +29,6 @@ import { NoteComponent } from './editor/note.component';
 	],
 	imports: [
 		BrowserModule,
-		FormsModule,
-		ReactiveFormsModule,
 		HttpModule,
 		appRouting,
 	],
