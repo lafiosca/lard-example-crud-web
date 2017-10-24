@@ -5,6 +5,7 @@ import {
 	CognitoUser,
 	CognitoUserPool,
 	CognitoUserSession,
+	CognitoRefreshToken,
 } from 'amazon-cognito-identity-js';
 
 import { Observable } from 'rxjs/Observable';
@@ -31,25 +32,25 @@ export class UserPoolService {
 		this.user = null;
 		this.session = null;
 
-		let user = new CognitoUser({
+		const user = new CognitoUser({
 			Username: username,
 			Pool: this.userPool,
 		});
 
-		let authDetails = new AuthenticationDetails({
+		const authDetails = new AuthenticationDetails({
 			Username: username,
 			Password: password,
 		});
 
-		return Observable.create(observer => {
+		return Observable.create((observer) => {
 			user.authenticateUser(authDetails, {
-				onSuccess: session => {
+				onSuccess: (session) => {
 					this.user = user;
 					this.session = session;
 					observer.next(session);
 					observer.complete();
 				},
-				onFailure: error => {
+				onFailure: (error) => {
 					console.error('Failed to authenticate to cognito user pool:', error);
 					observer.error(error);
 				},
@@ -60,10 +61,10 @@ export class UserPoolService {
 	logout() {
 		if (this.user) {
 			this.user.globalSignOut({
-				onSuccess: msg => {
+				onSuccess: (msg) => {
 					console.log('Global sign out complete:', msg);
 				},
-				onFailure: error => {
+				onFailure: (error) => {
 					console.error('Global sign out failed:', error);
 				},
 			});
@@ -81,8 +82,10 @@ export class UserPoolService {
 	}
 
 	private refreshSession() {
-		return Observable.bindNodeCallback(this.user.refreshSession.bind(this.user))(this.session.getRefreshToken())
-			.map(session => {
+		return Observable.bindNodeCallback<CognitoUserSession>(
+			<(v1: CognitoRefreshToken, v2: any) => void>(this.user.refreshSession.bind(this.user)),
+		)(this.session.getRefreshToken())
+			.map((session) => {
 				this.session = session;
 				return session;
 			});

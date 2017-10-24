@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 
 import { appRouting } from './app.routing';
@@ -29,6 +30,7 @@ import { NoteComponent } from './editor/note/note.component';
 	],
 	imports: [
 		BrowserModule,
+		FormsModule,
 		HttpModule,
 		appRouting,
 	],

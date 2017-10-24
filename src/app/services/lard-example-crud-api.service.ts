@@ -9,7 +9,7 @@ export class LardExampleCrudApiService {
 	constructor(private authHttp: AuthHttpService) { }
 
 	private getClient() {
-		return new DefaultApi(this.authHttp, Config.api.basePath);
+		return new DefaultApi(this.authHttp, Config.api.basePath, null);
 	}
 
 	getNotes() {

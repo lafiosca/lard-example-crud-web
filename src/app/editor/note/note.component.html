@@ -3,7 +3,7 @@
 <div>Title: <input type="text" [(ngModel)]="note.title"></div><br>
 <div>
 	Text:<br>
-	<textarea [(ngModel)]="note.text">
+	<textarea [(ngModel)]="note.text"></textarea>
 </div><br>
 <button class="btn btn-success" (click)="saveNote()" [disabled]="note.title.trim() === '' || saving || deleting">{{ saving ? 'Saving...' : 'Save Note' }}</button><br>
 <br>
