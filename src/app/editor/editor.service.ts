@@ -37,9 +37,21 @@ export class EditorService {
 					}
 				},
 				error: (error) => {
-					console.error(`Failed to load notes: ${error}`);
+					alert(`Failed to load notes: ${error}`);
 					this.notes.next([]);
 					this.note.next(null);
+				},
+			});
+	}
+
+	fetchNote(noteId) {
+		this.api.getNote(noteId)
+			.subscribe({
+				next: (note) => {
+					this.note.next(note);
+				},
+				error: (error) => {
+					alert(`Failed to load note: ${error}`);
 				},
 			});
 	}
@@ -47,11 +59,10 @@ export class EditorService {
 	selectNoteFromNotes(noteId, notes) {
 		for (let i = 0; i < notes.length; i += 1) {
 			if (notes[i].id === noteId) {
-				this.note.next(notes[i]);
-				return;
+				return this.fetchNote(noteId);
 			}
-			throw new Error(`Note ${noteId} does not exist`);
 		}
+		throw new Error(`Note ${noteId} does not exist`);
 	}
 
 	selectNote(noteId) {
@@ -68,29 +79,29 @@ export class EditorService {
 				},
 				error: (error) => {
 					this.note.next(null);
-					console.error(`Failed to load note ${noteId}: ${error}`);
+					alert(`Failed to load note ${noteId}: ${error}`);
 				},
 			});
 	}
 
 	createNote(note) {
 		return this.api.createNote(note)
-			.map(() => {
-				this.refreshNotes(note);
+			.map((newNote) => {
+				this.refreshNotes(newNote);
 				return true;
 			});
 	}
 
 	updateNote(note) {
 		return this.api.updateNote(note)
-			.map(() => {
-				this.refreshNotes(note);
+			.map((newNote) => {
+				this.refreshNotes(newNote);
 				return true;
 			});
 	}
 
-	deleteNote(note) {
-		return this.api.deleteNote(note.noteId)
+	deleteNote(noteId) {
+		return this.api.deleteNote(noteId)
 			.map(() => {
 				this.refreshNotes(null);
 				return true;

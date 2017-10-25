@@ -1,0 +1,9 @@
+'use strict';
+
+module.exports = {
+	region: '%AwsRegion%',
+	userPoolName: '%UserPoolName%',
+	userPoolId: '%UserPoolId%',
+	userPoolClientWeb: '%UserPoolClientWeb%',
+};
+

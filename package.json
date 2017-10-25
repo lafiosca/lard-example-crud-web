@@ -24,8 +24,16 @@
     "amazon-cognito-identity-js": "^1.21.0",
     "aws-sdk": "^2.139.0",
     "aws-sign-web": "^1.2.2",
+    "bluebird": "^3.5.1",
+    "co": "^4.6.0",
+    "console-control-strings": "^1.1.0",
     "core-js": "^2.4.1",
+    "gauge": "^2.7.4",
+    "humanpass": "^0.1.0",
+    "inquirer": "^3.3.0",
     "rxjs": "^5.4.2",
+    "sprintf-js": "^1.1.1",
+    "uuid": "^3.1.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

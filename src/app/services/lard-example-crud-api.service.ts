@@ -27,7 +27,7 @@ export class LardExampleCrudApiService {
 	createNote(note) {
 		const body = { data: note };
 		return this.getClient()
-			.createNote(note)
+			.createNote(body)
 			.map(response => response.data);
 	}
 
