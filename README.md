@@ -1,28 +1,38 @@
-# LardExampleCrudWeb
+# lard-example-crud-web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.0.
+An example project demonstrating a web application that interacts with a serverless REST API deployment using [Lard](https://github.com/lafiosca/lard). This is the companion project to [lard-example-crud-api](https://github.com/lafiosca/lard-example-crud-api).
 
-## Development server
+## Pre-Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* API preparation
+  1. Follow all the directions in the [lard-example-crud-api](https://github.com/lafiosca/lard-example-crud-api) README.
 
-## Code scaffolding
+* Angular preparation
+  1. Install Angular CLI globally: `npm i -g @angular/cli`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+1. Clone this repository and enter its directory:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+    `git clone https://github.com/lafiosca/lard-example-crud-web.git && cd lard-example-crud-web`
 
-## Running unit tests
+2. Edit `bin/definitions.sh` as appropriate, only if you changed the default stack names in lard-example-crud-api
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Run `bin/generate-configs.sh` to create a couple of config files referencing your development stack
 
-## Running end-to-end tests
+4. Run `bin/generate-sdk.sh` to generate the library code for accessing your development API
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+5. Run `bin/manage-user-pool.sh` with the appropriate option values to establish a user for yourself in your development Cognito User Pool:
 
-## Further help
+    `bin/manage-user-pool.sh user create -u yourusername -n 'Your Name' -p +14045551234 -e 'your@email.address'`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    This command will automatically prompt you to choose a generated password, and it will present you with a confirmation dialog before taking action. Record the username and password for use in the web application.
+
+6. Run `ng serve` to start the local web application, pointing at your development stacks.
+
+7. Open [http://localhost:4200/](http://localhost:4200/) in your web browser.
+
+8. Log into the web application using the username and password from step 5 above.
+
+9. Create, retrieve, update, and delete some notes using your new serverless API deployment.
+
