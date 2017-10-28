@@ -36,3 +36,6 @@ An example project demonstrating a web application that interacts with a serverl
 
 9. Create, retrieve, update, and delete some notes using your new serverless API deployment.
 
+## Cleanup
+
+When you are done, hit control-c in the terminal where your `ng serve` command is running. You can delete the lard-example-crud-web project directory, but the API and related resources will still exist in your AWS account. Follow the cleanup directions in [lard-example-crud-api](https://github.com/lafiosca/lard-example-crud-api) when you are ready to remove them.
